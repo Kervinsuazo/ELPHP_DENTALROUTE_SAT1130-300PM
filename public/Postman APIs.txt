@@ -1,0 +1,235 @@
+//Check if account is logged in
+GET: http://localhost/pages/session-check.php
+
+================================================
+-----FOR PATIENT SIDE------
+//LOGIN
+POST : http://localhost/pages/user-login.php
+JSON:
+{
+  "username": "shakespearesye@gmail.com",
+  "password": "sasawasad"
+}
+
+
+================================================
+//REGISTRATION
+POST: http://localhost/pages/registration.php?api=register
+JSON:
+{
+    "full_name": "John Doe postmant",
+    "address": "123 Main St",
+    "city": "New York",
+    "gender": "male",
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "password_again": "password123"
+}
+
+=================================================
+//Forgot Password
+POST: http://localhost/pages/forgot-password.php?api=password
+JSON: 
+{
+    "fullname": "Cyriel Maningo",
+    "email": "shakespearesye@gmail.com"
+}
+
+=================================================
+//Change Password
+POST: http://localhost/pages/change-password.php?api=password
+JSON: 
+{
+  "cpass": "oldpassword",
+  "npass": "newpassword",
+  "cfpass": "newpassword"
+}
+
+=================================================
+//Book Appointment
+POST: http://localhost/pages/book-appointment.php?api=appointments
+JSON:
+{
+    "Doctorspecialization": "Dentist",
+    "doctor": "1",
+    "fees": "500",
+    "appdate": "2025-05-10",
+    "apptime": "10:00"
+}
+
+=================================================
+//Check all appointment histories
+GET: http://localhost/pages/appointment-history.php?api=appointments
+
+=================================================
+//Cancel appointments
+DELETE: http://localhost/pages/appointment-history.php?api=appointments
+JSON:
+{
+  "id": 39
+}
+
+=================================================
+//Check Profile
+GET: http://localhost/pages/edit-profile.php?api=profile
+
+=================================================
+//Change Profile Information
+POST: http://localhost/pages/edit-profile.php?api=profile
+JSON:
+{
+  "fname": "John Doe",
+  "address": "123 Test Street",
+  "city": "Metro City",
+  "gender": "male"
+}
+
+=================================================
+
+---------DOCTOR'S SIDE---------
+//Login side for Doctor
+POST: http://localhost/pages/doctor/index.php
+JSON:
+{
+    "username": "laurawhite@example.com",
+    "password": "sasawasad"
+}
+
+=================================================
+//Retrieve Password for Doctor
+POST: http://localhost/pages/doctor/forgot-password.php?api=password
+JSON:
+{
+  "contactno": "1234567890",
+  "email": "laurawhite@example.com"
+}
+
+
+=================================================
+//Check Doctor's Appointments
+GET: http://localhost/pages/doctor/appointment-history.php?api=appointments
+
+=================================================
+//Cancel Doctor's Appointments
+DELETE: http://localhost/pages/doctor/appointment-history.php?api=appointments
+JSON:
+id=42
+
+=================================================
+//Add Patients for Doctors
+POST: http://localhost/pages/doctor/add-patient.php?api=patient
+JSON: 
+{
+  "patname": "John Doe",
+  "patcontact": "0912345678",
+  "patemail": "john@example.com",
+  "gender": "male",
+  "pataddress": "123 Main St",
+  "patage": "30",
+  "medhis": "None"
+}
+=================================================
+//Check Doctor's Profile info
+GET: http://localhost/pages/doctor/edit-profile.php?api=profile
+
+=================================================
+//Change Doctor's Profile Info
+POST: http://localhost/pages/doctor/edit-profile.php?api=profile
+{
+  "Doctorspecialization": "Dentist",
+  "docname": "Dr. Laura White1",
+  "clinicaddress": "123 Main St",
+  "docfees": "500",
+  "doccontact": "1234567890"
+}
+
+=================================================
+//Get all Patient's information
+GET: http://localhost/pages/doctor/manage-patient.php?api=patient
+
+=================================================
+//Delete Patient
+DELETE: http://localhost/pages/doctor/manage-patient.php?api=patient
+
+=================================================
+//Search Patient
+GET: http://localhost/pages/doctor/search.php?api=patientsearch=Test
+
+----ADMIN SIDE----
+POST: http://localhost/pages/admin/index.php
+JSON:
+{
+    "username": "admin",
+    "password": "saysay123"
+}
+=================================================
+//Get all users
+GET: http://localhost/pages/admin/manage-users.php?api=users
+
+=================================================
+//Add User via Admin Account
+POST: http://localhost/pages/admin/manage-users.php?api=users
+JSON: 
+{
+    "fullName": "Alice Doe",
+    "address": "789 Lane",
+    "city": "Uptown",
+    "gender": "Female",
+    "email": "alice@example.com"
+}
+=================================================
+//Edit User via Admin
+PUT: http://localhost/pages/admin/manage-users.php?api=users
+JSON:
+{
+    "id": 3,
+    "fullName": "Jane Updated",
+    "address": "New Address",
+    "city": "New City",
+    "gender": "Female",
+    "email": "jane.updated@example.com"
+}
+=================================================
+//Delete User via Admin Account
+DELETE: http://localhost/pages/admin/manage-users.php?api=users
+JSON:
+{
+  "id": 2
+}
+=================================================
+//Get all Doctors
+GET: http://localhost/pages/admin/manage-doctors.php?api=doctors
+
+=================================================
+//Add Doctor
+POST: http://localhost/pages/admin/manage-doctors.php?api=doctors
+JSON: 
+{
+    "specilization": "Dentist",
+    "doctorName": "Dr. Kervin Suazo"
+}
+=================================================
+//Edit Doctor's Information
+PUT: http://localhost/pages/admin/manage-doctors.php?api=doctors
+JSON: 
+{
+    "id": 32,
+    "specilization": "Periodontist",
+    "doctorName": "Dr. Jane Doe"
+}
+
+=================================================
+//Delete Doctor
+DELETE: http://localhost/pages/admin/manage-doctors.php?api=doctors
+JSON: 
+id=20
+
+=================================================
+//Check all appointments
+GET: http://localhost/pages/admin/appointment-history.php?api=appointment
+
+=================================================
+//Check login logs of all users (including doctors)
+GET: http://localhost/pages/admin/user-logs.php?api=users
+
+=================================================
